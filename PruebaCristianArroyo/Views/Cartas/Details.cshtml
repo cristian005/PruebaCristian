@@ -1,0 +1,34 @@
+﻿@model PruebaCristianArroyo.Models.Carta
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles de Carta</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+        <dd class = "col-sm-10">
+            @{
+                var base64 = Convert.ToBase64String(Model.Imagen);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            <img src="@imgsrc" style="max-width: 500px; max-height: 500px" />
+        </dd>
+       
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a asp-action="Index">Regresar a la lista</a>
+</div>

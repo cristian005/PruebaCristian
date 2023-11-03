@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PruebaCristianArroyo.Models.Tabla>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="row">
+    <div class="col-md-3 form-horizontal">
+        <form asp-action="GenerarTala" method="post">
+            <br />
+            <input type="number" class="form-control" name="usr" placeholder="Numero de Tablas" required autofocus>
+            <br />
+            <button class="btn btn-primary" type="submit">
+                Generar
+            </button>
+       
+        </form>
+    </div>
+</div>
+
