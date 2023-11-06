@@ -7,7 +7,7 @@
 <h1>Cartas Registradas</h1>
 
 <p>
-    <a asp-action="Create">Crear Nueva Carta</a>
+    <a class="btn btn-info" style="color:white; margin-left:75%; font-weight:600;" asp-action="Create">Crear Nueva Carta</a>
 </p>
 <table class="table">
     <thead>
@@ -35,9 +35,9 @@
                     <img src="@imgsrc" style="max-width: 100px; max-height: 100px"/>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalles</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }

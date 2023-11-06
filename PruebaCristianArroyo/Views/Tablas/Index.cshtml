@@ -1,19 +1,52 @@
 ﻿@model IEnumerable<PruebaCristianArroyo.Models.Tabla>
 
+
+
 @{
+    List<PruebaCristianArroyo.Models.ViewTabla> lista = ViewBag.Tabla;
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 <div class="row">
     <div class="col-md-3 form-horizontal">
         <form asp-action="GenerarTala" method="post">
             <br />
+            <div>
             <input type="number" class="form-control" name="usr" placeholder="Numero de Tablas" required autofocus>
-            <br />
-            <button class="btn btn-primary" type="submit">
+            <br>
+            <button class="btn btn-primary" type="submit" style="color:white; font-weight:600;">
                 Generar
             </button>
+            </div>
+            @if (lista != null)
+                    {
+                            @for (int i = 0; i < lista.Count; i++)
+                            {
+                                if (i % 16 == 0)
+                                {
+                                    @:<br> <br> <br>
+                                    @:<table>
+                                    @:</table>
+
+                                }
+
+                                if (i % 4 == 0)
+                                {
+                                    @:<tr>
+                                    @:</tr>
+                                }
+                                <td>
+                                    @{
+                                        var base64 = Convert.ToBase64String(lista[i].Imagen);
+                                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                                    }
+                                    <img src="@imgsrc" style="max-width: 50px; max-height: 50px" />
+                            </td>
+
+                            }
+
+                    }
+
        
         </form>
     </div>

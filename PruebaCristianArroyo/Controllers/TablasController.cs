@@ -64,6 +64,27 @@ namespace PruebaCristianArroyo.Controllers
 
             }
 
+            //Leemos las Tabla guardadas en la base de datos
+            var Tables = _context.Tablas.ToList();
+
+            //Creamos una lista con el modelo de la tabla con imagen
+            List<ViewTabla> TablaImagen = new List<ViewTabla>();
+
+
+            for(int i = 0;i<Tables.Count;i++)
+            {
+                ViewTabla elementos = new ViewTabla();
+                var result = cartas.Find(x => x.Id == Tables[i].IdCarta);
+                if (result != null)
+                {
+                    elementos.NumCarta = Tables[i].NumCarta;
+                    elementos.Imagen = result.Imagen;
+                    TablaImagen.Add(elementos);
+                }
+            }
+
+            ViewBag.Tabla = TablaImagen;
+
 
             return View("Index");
         }
